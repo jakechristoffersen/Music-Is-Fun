@@ -11,13 +11,15 @@ function ItunesService(){
       //modifies the objects to reduce the excess data
       return $.getJSON(url).then(function(response){
         var songList = response.results.map(function (song) {
+          debugger
                   return {
                       title: song.trackName,
-                      albumArt: song.artworkUrl60,
+                      albumArt: song.artworkUrl100,
                       artist: song.artistName,
                       collection: song.collectionName,
                       price: song.collectionPrice,
-                      preview: song.previewUrl
+                      preview: song.previewUrl,
+                      id: song.trackId
                     };
                 })
         //changes button back to GET MUSIC once songs are loaded
